@@ -210,14 +210,45 @@ const create_enemy = () => {
     let enemy = document.createElement("div");
     enemy.className = "enemy";
     enemy.style.top = 20 + "px";
+    
 
     enemy.style.left = Math.random() * (0, document.body.offsetWidth - 250) + "px";
+
  
     document.body.appendChild(enemy);
+
+  //  console.log("all_enemy_[]", checkGenNumber()); // implement enemy.style.left  psevdo random number
    
 }
+// !!!!!!!!!!!!! //  function to prevent mobs from spawning in each other !!!!!!!!!!
+const checkGenNumber = () => {   
 
-var enemy_counter = 0;
+    let all_enemy = document.querySelectorAll(".enemy");
+
+    all_enemy_left = [];
+
+    all_enemy.forEach(element => {
+
+        let this_enemy_left = element.style.left;
+        all_enemy_left.push(Number(this_enemy_left.substr(0,3)));
+
+    });
+
+    all_enemy_left.sort(); // sort all numbers 
+
+    let validator = True; // variable to work with while
+
+        while(validator == true){
+            validator = false;
+            let randomNumber = Math.random() * (0, document.body.clientWidth);
+        }
+
+
+    return all_enemy_left
+
+}
+
+var enemy_counter = 0; // enemy counter
 
 setInterval( () => {
     enemy_counter++;
