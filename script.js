@@ -10,13 +10,11 @@
 
 var player = document.querySelector("#player");
 
+var counter = 0; // counter of death
 
-console.log(player);
 
 document.addEventListener('keydown', function(event) {
 
-   
-    console.log(event.keyCode);
     
      switch(event.keyCode){
 
@@ -99,6 +97,7 @@ const bullet_move = (bullet) => {
 
 const is_shot = (bullet) => {
     
+
     let enemy_all = document.querySelectorAll(".enemy");
 
     let bullet_left_x = bullet.offsetLeft;
@@ -112,20 +111,53 @@ const is_shot = (bullet) => {
             if(bullet_left_x > LeftX && bullet_left_x < RightX && bullet.offsetTop < 200){
 
                 animation(element); // add explosin animation
-                    
-  
+                bullet.remove();
+                counter++; // counter killing
+
+                counter_render(counter);
+
                 setTimeout( () => {
+
                     element.remove(); 
-                    bullet.remove();
-                }, 2000)
+                
+                }, 1000)
             }
         });
     }
 }
 
-const animation = (element) => {
+const animation = (element) => { // explosin animation
+
     element.className = 'boom';
+
 }
+
+const counter_create = (counter) => {
+
+    let block = document.createElement("div");
+    block.className = "lifes";
+
+    document.body.appendChild(block);
+    
+    block.innerHTML = "<span>" + "</span>" + "<h1>" + counter + "</h1>";
+
+}
+
+const counter_render = (counter) => {
+
+    let block = document.querySelector(".lifes"); // for render counter
+
+    let h1_counter = block.querySelector("h1");
+    
+    if(counter >= 10){
+        h1_counter.style.left = 14 + "px";
+    }
+
+    block.innerHTML = "<span>" + "</span>" + "<h1>" + counter + "</h1>";
+
+}
+
+counter_create(0);
 
 
 const create_enemy = () => {
@@ -134,13 +166,10 @@ const create_enemy = () => {
     enemy.className = "enemy";
     enemy.style.top = 20 + "px";
 
-    console.log("offset width", document.body.offsetWidth );
-
     enemy.style.left = Math.random() * (0, document.body.offsetWidth - 250) + "px";
  
     document.body.appendChild(enemy);
 }
-
 
 setInterval( () => {
     create_enemy();

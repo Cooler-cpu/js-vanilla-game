@@ -16,9 +16,10 @@ body {
 	top: calc(50% + 200px);
 	left: 60px;
 	/* Плавное движение */
+
     -webkit-transition: all 0.2s;
     -moz-transition: all 0.2s;
-	transition: all 0.2s;
+	transition: all 0.2s ease-in-out;
 	
 }
 
@@ -54,7 +55,7 @@ body {
 
 	-webkit-transition: all 0.5s ;
     -moz-transition: all 0.5s ;
-	transition: all 0.5s ;
+	transition: all 0.5s;
 }
 
 .boom {
@@ -64,17 +65,27 @@ body {
 	height: 200px;
 }
 
-#lifes {
+.lifes {
 	position: absolute;
-	top: 20px;
-	right: 20px;
+	top: 40px;
+	left: 40px;
 }
-#lifes span {
+
+
+.lifes span {
 	display: block;
 	margin: 10px;
 	float: left;
 	width: 40px;
 	height: 40px;
-	background: url(img/life.png);
+	background: url(img/death.png);
 	background-size: cover;
+
+}
+
+.lifes h1{
+	position: absolute;
+	top: -50px;
+	left: 22px;
+	color: red;
 }
