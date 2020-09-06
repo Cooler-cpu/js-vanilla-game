@@ -1,0 +1,80 @@
+html, body {
+	height: 100%;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+body {
+	background: url(img/bg.jpg);
+	background-size: cover;
+	position: relative;
+}
+
+#player {
+	height: 270px;
+	position: absolute;
+	top: calc(50% + 200px);
+	left: 60px;
+	/* Плавное движение */
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+	transition: all 0.2s;
+	
+}
+
+#player.skin_1 {
+	width: 250px;
+	height: 220px;
+	background: url(img/Player5.png) ;
+	background-size:cover;
+}
+
+
+.enemy {
+	position: absolute;
+	top: calc(10% - 90px);
+	right: 20px;
+	width: 240px;
+	height: 194px;
+	background: url("img/enemy2.gif") no-repeat;
+}
+
+.bullet {
+	width: 30px;
+    height: 10px;
+    background: #fefbfe;
+    border-radius: 2px 5px 5px 2px;
+    position: absolute;
+    top: 20%;
+    left: 200px;
+    border-radius: 2px 7px 7px 2px;
+    box-shadow: 0 0 5px #fff, 0 0 8px #fff, 0 0 12px #fff, 0 0 15px red, 0 0 25px red;
+	z-index: 5;
+	transform: rotate(-90deg);
+
+	-webkit-transition: all 0.5s ;
+    -moz-transition: all 0.5s ;
+	transition: all 0.5s ;
+}
+
+.boom {
+	background: url(img/boom.gif);
+	position: absolute;
+	width: 200px;
+	height: 200px;
+}
+
+#lifes {
+	position: absolute;
+	top: 20px;
+	right: 20px;
+}
+#lifes span {
+	display: block;
+	margin: 10px;
+	float: left;
+	width: 40px;
+	height: 40px;
+	background: url(img/life.png);
+	background-size: cover;
+}
